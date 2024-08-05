@@ -53,7 +53,7 @@
     ```bash
     docker exec -it library_app /bin/bash
     ```
-2. Inside docker container shell  create superuser
+2. Inside docker container shell  populate database
     ```bash
     python manage.py fake_authors &&
     python manage.py fake_books &&
@@ -67,9 +67,12 @@
 - In section Auth Token click on add token and select user
 
 #### Or get token from api
-
-- POST  http://127.0.0.1:8000/api-token-auth/ with body key: username value: <username> and key: password value: <password>
-- You should get token example "token": "0298a0c3d491f3285f1895f5a2a9d3538762fc8f"
+    ```bash
+    curl -X POST http://127.0.0.1:8000/api-token-auth/ \
+        -H "Content-Type: application/json" \
+        -d '{"username": "<username>", "password": "<password>"}'
+    ```
+- You should get token example {"token":"94442b5a9d2db8dc91b0c12d95bbc465f0962d33"}
 
 #### Token usage 
 - Token authorization is required for POST, PUT, PATCH, DELETE

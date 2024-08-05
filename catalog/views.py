@@ -1,8 +1,8 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated, BasePermission, SAFE_METHODS
-from .models import Author,Book, AuthorBook
+from .models import Author,Book
 
-from .serializers import AuthorSerializer, BookSerializer, AuthorBookSerializer
+from .serializers import AuthorSerializer, BookSerializer
 
 class ReadOnly(BasePermission):
     def has_permission(self, request, view):
@@ -37,16 +37,3 @@ class BookDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticated]
     queryset = Book.objects.all()
-    
-class AuthorBookList(generics.ListCreateAPIView):
-    serializer_class = AuthorBookSerializer
-    permission_classes = [IsAuthenticated|ReadOnly]
-
-    def get_queryset(self):
-        queryset = AuthorBook.objects.all()
-        return queryset
-    
-class AuthorBookDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = AuthorBookSerializer
-    permission_classes = [IsAuthenticated]
-    queryset = AuthorBook.objects.all()
