@@ -67,7 +67,7 @@
 - In section Auth Token click on add token and select user
 
 #### Or get token from api
-    ```bash
+    ```console
     curl -X POST http://127.0.0.1:8000/api-token-auth/ \
         -H "Content-Type: application/json" \
         -d '{"username": "<username>", "password": "<password>"}'
@@ -77,3 +77,20 @@
 #### Token usage 
 - Token authorization is required for POST, PUT, PATCH, DELETE
 - Add token to header of request Authorization Token c0298a0c3d491f3285f1895f5a2a9d3538762fc8f
+
+### API endpoint
+- /api/book/
+    - methods: GET, POST
+    - paramethers: ?page= , ?title__contains= ,?printed__lte=
+
+- /api/book/int:pk/
+    - methods: GET, PUT, PATCH, DELETE
+
+- /api/author/
+    - methods: GET, POST
+
+- /api/author/int:pk/
+    - methods: GET, PUT, PATCH, DELETE
+
+- /api-token-auth/
+    - POST
