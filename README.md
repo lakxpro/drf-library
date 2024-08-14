@@ -42,7 +42,7 @@
     docker exec -it library_app /bin/bash
     ```
 
-2. Inside docker container shell  create superuser
+2. Inside docker container shell  run
     ```bash
     python manage.py test
     ```
@@ -53,11 +53,10 @@
     ```bash
     docker exec -it library_app /bin/bash
     ```
-2. Inside docker container shell  populate database
+2. Inside docker container shell generate more fake data
     ```bash
     python manage.py fake_authors &&
     python manage.py fake_books &&
-    python manage.py fake_author_book_relation &&
     ```
 
 ### Token authorization after creating superuser

@@ -22,7 +22,6 @@ COPY . /app/
 RUN python manage.py migrate
 RUN python manage.py fake_authors
 RUN python manage.py fake_books
-RUN python manage.py fake_author_book_relation
 
 # Run the Django application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
